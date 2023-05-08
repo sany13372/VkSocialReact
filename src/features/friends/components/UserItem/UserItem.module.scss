@@ -1,0 +1,49 @@
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #e0e3e6;
+  width: 120px;
+  height: 30px;
+  font-size: 12px;
+  transition: opacity ease-in-out 0.5s;
+  &:hover{
+    opacity: 0.4;
+  }
+}
+
+.avatar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > img{
+    cursor: pointer;
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+.item{
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 4px;
+  width: 200px;
+  border: 1px solid #e9e8ea;
+  padding: 0.3rem;
+  &:hover{
+    background-color: #f2f5f8;
+  }
+}
+
+.block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}

@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@fonts/*": ["assets/fonts/*"],
+      "@styles/*": ["assets/styles/*"],
+      "@img/*": ["assets/img/*"],
+
+      "@features/*": ["features/*"],
+
+      "@accessDenied/*": ["features/accessDenied/*"],
+      "@authorization/*": ["features/authorization/*"],
+      "@notFound/*": ["features/notFound/*"],
+
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@providers/*": ["providers/*"],
+      "@context/*": ["context/*"],
+      "@data/*": ["data/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@services/*": ["services/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@api/*": ["api/*"]
+    },
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

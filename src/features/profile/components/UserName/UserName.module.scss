@@ -1,0 +1,15 @@
+.titles {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  //border-radius: 10px;
+ // box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+
+  > div {
+    color: #171c26;
+    font-size: 24px;
+    font-weight: 800;
+  }
+}

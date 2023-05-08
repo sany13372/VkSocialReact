@@ -1,0 +1,12 @@
+.sideBar{
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1rem 0rem 1rem;
+  gap: 0.4rem;
+  border-right: 1px solid #efeef2;
+}
+
+.title{
+  cursor: pointer;
+  font-weight: 800;
+}

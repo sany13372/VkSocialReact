@@ -1,0 +1,16 @@
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #e0e3e6;
+  width: 120px;
+  height: 30px;
+  font-size: 12px;
+  transition: opacity ease-in-out 0.5s;
+  &:hover{
+    opacity: 0.4;
+  }
+}

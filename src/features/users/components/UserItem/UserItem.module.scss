@@ -1,0 +1,32 @@
+.avatar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > img{
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+.item{
+  cursor: pointer;
+  width: 300px;
+  display: flex;
+  padding: 0.3rem;
+  gap: 1rem;
+  border-radius: 4px;
+  margin-top: 0.4rem;
+  border: 1px solid #e9e8ea;
+  &:hover{
+    background-color: #f2f5f8;
+  }
+}
+
+.block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0rem;
+}
