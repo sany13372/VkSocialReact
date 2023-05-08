@@ -16,10 +16,10 @@ const CreatePostLine: FC = () => {
     const change = () => {
 
     }
-    const {uploadImage} = useUpload(change, 'posts', selectFile)
+    const {uploadImage} = useUpload(change, selectFile, 'posts')
     const creatPost = async () => {
-        // await PostService.create({description: description, user: user?._id, image: ''})
-        //     .then(() => setRefetchProfile(!refetchProfile))
+        await PostService.create({description: description, user: user?._id, image: ''})
+            .then(() => setRefetchProfile(!refetchProfile))
         setSelectFile(!selectFile)
         setDescription('')
     }

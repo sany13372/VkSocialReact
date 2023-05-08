@@ -1,12 +1,12 @@
 import {FC, useMemo} from 'react';
-import {BiUserCircle,BiNews} from 'react-icons/bi'
+import {BiNews, BiUserCircle} from 'react-icons/bi'
 import {FiUsers} from 'react-icons/fi'
 import {GiThreeFriends} from 'react-icons/gi'
 import {TiMessages} from 'react-icons/ti'
 import SideBarItem from "@components/LeftSideBar/SideBarItem/SideBarItem";
 import styles from './LeftSideBar.module.scss'
 import {useAuth} from "@providers/AuthProvider";
-import * as process from "process";
+
 export interface ISideBarItem {
     title:string
     icon:any
@@ -43,7 +43,6 @@ const LeftSideBar: FC = () => {
         },
 
     ]),[])
-    console.log('ss',)
     return (
         <div className={styles.sideBar}>
                 {menus.map((item) => <SideBarItem key={item.title} item={item}/>)}

@@ -4,8 +4,8 @@ import {FileService} from "@services/file.service";
 
 type TypeUpload = (
     onChange: (...event: any[]) => void,
+    value:any,
     folder?: string,
-    value:any
 ) => {
     uploadImage: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
     isLoading: boolean
@@ -23,7 +23,8 @@ export const useUpload: TypeUpload = (onChange, folder,value) => {
                 const formData = new FormData()
                 formData.append('image', files[0])
                 await FileService.upload(formData, folder)
-                    .then((data) => onChange(data[0].url))
+                console.log(onChange)
+                    //.then((data) => onChange(data[0].url))
                 setTimeout(() => {
                     setIsLoading(false)
                 }, 1000)
