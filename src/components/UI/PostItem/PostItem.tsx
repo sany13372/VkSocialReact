@@ -29,6 +29,7 @@ const PostItem: FC<IPostItem> = ({post, refetch, setRefetch, userId}) => {
                 .then(() => setRefetch(!refetch))
         }
     }
+    console.log(post)
 
     useEffect(() => {
         UserService.getById(post.user)
@@ -46,6 +47,11 @@ const PostItem: FC<IPostItem> = ({post, refetch, setRefetch, userId}) => {
                 <div>{user?.name} {user?.lastName}</div>
                 <div>{convertMongoDate(post.createdAt)}</div>
             </div>
+            {post.image &&
+                <div className={styles.img}>
+                    <img className={styles.img} src={post.image}/>
+                </div>
+            }
             <p>
                 {post.description}
             </p>

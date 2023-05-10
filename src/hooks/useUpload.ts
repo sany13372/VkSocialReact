@@ -5,13 +5,12 @@ import {FileService} from "@services/file.service";
 type TypeUpload = (
     onChange: (...event: any[]) => void,
     value:any,
-    folder?: string,
+  //  folder?: string,
 ) => {
     uploadImage: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
     isLoading: boolean
 }
-
-export const useUpload: TypeUpload = (onChange, folder,value) => {
+export const useUpload: TypeUpload = (onChange, value) => {
     const [isLoading, setIsLoading] = useState(false)
 
 
@@ -21,10 +20,9 @@ export const useUpload: TypeUpload = (onChange, folder,value) => {
             const files = e.target.files
             if (files?.length) {
                 const formData = new FormData()
-                formData.append('image', files[0])
-                await FileService.upload(formData, folder)
-                console.log(onChange)
-                    //.then((data) => onChange(data[0].url))
+                formData.append('picture', files[0])
+                await FileService.upload(formData)
+                    .then((data) => onChange(data.data))
                 setTimeout(() => {
                     setIsLoading(false)
                 }, 1000)

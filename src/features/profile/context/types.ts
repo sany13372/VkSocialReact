@@ -8,7 +8,7 @@ export interface IPost {
     _id:string
     user: any
     description: string
-    images?: string[]
+    image?: string
     createdAt: string,
     updatedAt: string,
 }

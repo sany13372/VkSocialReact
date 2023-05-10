@@ -20,6 +20,16 @@
   }
 }
 
+.img{
+  display: flex;
+  justify-content: center;
+  > img{
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+  }
+}
+
 .like{
   cursor: pointer;
 }

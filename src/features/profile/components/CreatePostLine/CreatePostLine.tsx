@@ -13,15 +13,24 @@ const CreatePostLine: FC = () => {
     const {user} = useAuth()
     const {setRefetchProfile} = useActions()
     const {refetchProfile} = useTypedSelector((store) => store.profile)
-    const change = () => {
+    const [imgPath,setImgPath] = useState<string>('')
+    const change = async (path: any) => {
+        if (path) {
+            console.log(path)
+            setImgPath(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
+            await console.log('change',)
+            console.log(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
+        }
+        console.log()
 
     }
-    const {uploadImage} = useUpload(change, selectFile, 'posts')
+    const {uploadImage} = useUpload(change, selectFile)
     const creatPost = async () => {
-        await PostService.create({description: description, user: user?._id, image: ''})
+        await PostService.create({description: description, user: user?._id, image: imgPath})
             .then(() => setRefetchProfile(!refetchProfile))
         setSelectFile(!selectFile)
         setDescription('')
+        console.log(uploadImage)
     }
 
     return (
