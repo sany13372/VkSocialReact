@@ -29,7 +29,6 @@ const PostItem: FC<IPostItem> = ({post, refetch, setRefetch, userId}) => {
                 .then(() => setRefetch(!refetch))
         }
     }
-    console.log(post)
 
     useEffect(() => {
         UserService.getById(post.user)

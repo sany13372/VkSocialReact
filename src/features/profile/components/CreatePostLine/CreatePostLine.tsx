@@ -21,8 +21,6 @@ const CreatePostLine: FC = () => {
             await console.log('change',)
             console.log(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
         }
-        console.log()
-
     }
     const {uploadImage} = useUpload(change, selectFile)
     const creatPost = async () => {
