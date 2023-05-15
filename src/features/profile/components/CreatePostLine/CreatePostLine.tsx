@@ -13,7 +13,7 @@ const CreatePostLine: FC = () => {
     const {user} = useAuth()
     const {setRefetchProfile} = useActions()
     const {refetchProfile} = useTypedSelector((store) => store.profile)
-    const [imgPath,setImgPath] = useState<string>('')
+    const [imgPath, setImgPath] = useState<string>('')
     const change = async (path: any) => {
         if (path) {
             setImgPath(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
@@ -21,16 +21,20 @@ const CreatePostLine: FC = () => {
     }
     const {uploadImage} = useUpload(change, selectFile)
     const creatPost = async () => {
-        await PostService.create({description: description, user: user?._id, image: imgPath})
-            .then(() => setRefetchProfile(!refetchProfile))
-        setSelectFile(!selectFile)
-        setDescription('')
-        //setImgPath('')
+        if (description === '') {
+            alert('Заполните поле')
+        } else {
+            await PostService.create({description: description, user: user?._id, image: imgPath})
+                .then(() => setRefetchProfile(!refetchProfile))
+            setSelectFile(!selectFile)
+            setDescription('')
+        }
     }
 
     return (
         <div className={styles.item}>
-            <input type="text" placeholder={'Название поста'} className={styles.field} value={description}
+            <input type="text" placeholder={'Название поста'} required={true} className={styles.field}
+                   value={description}
                    onChange={(e) => setDescription(e.target.value)}/>
             <BiFile size={20} className={styles.icon}/>
             <input type="file" className={styles.file} onChange={uploadImage}/>
