@@ -25,7 +25,7 @@ const CreatePostLine: FC = () => {
             .then(() => setRefetchProfile(!refetchProfile))
         setSelectFile(!selectFile)
         setDescription('')
-        setImgPath('')
+        //setImgPath('')
     }
 
     return (
