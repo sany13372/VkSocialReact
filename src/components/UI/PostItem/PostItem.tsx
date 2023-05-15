@@ -4,7 +4,7 @@ import {convertMongoDate} from "@utils/api/converDate";
 import styles from './PostItem.module.scss'
 import {BiLike} from 'react-icons/bi'
 import {LikeService} from "@services/like.service";
-import notImg from '@assets/noAvatar.jpg'
+import notImg from '@assets/noAvatar.png'
 import {IUser} from "@context/user/user.types";
 import {UserService} from "@services/user.service";
 

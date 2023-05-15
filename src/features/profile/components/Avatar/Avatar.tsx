@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import NotImg from '@assets/noAvatar.jpg'
+import NotImg from '@assets/noAvatar.png'
 import styles from './Avatar.module.scss'
 import {IUser} from "@context/user/user.types";
 

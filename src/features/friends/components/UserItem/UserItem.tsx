@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from 'react';
 import {IUser} from "@context/user/user.types";
-import notImg from '@assets/noAvatar.jpg'
+import notImg from '@assets/noAvatar.png'
 import styles from './UserItem.module.scss'
 import {UserService} from "@services/user.service";
 import {useAuth} from "@providers/AuthProvider";
