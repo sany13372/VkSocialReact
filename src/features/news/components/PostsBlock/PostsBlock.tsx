@@ -8,11 +8,11 @@ const PostsBlock: FC<{ userId: string }> = ({userId}) => {
     const {user} = useAuth()
     const [posts, setPosts] = useState<IPost[]>([])
     const [refetch, setRefetch] = useState<boolean>(false)
+
     useEffect(() => {
         if (userId) {
             PostService.getUserId(userId)
                 .then((data) => setPosts(data.data))
-                //.finally(() => setisLoading(false))
         }
     }, [userId, refetch])
 

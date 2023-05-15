@@ -15,11 +15,15 @@ const User: FC = () => {
     const {user: userAuth, setUser: setAuthUser} = useAuth()
     const [isToggle, setIsToggle] = useState<boolean>(false)
     const param = useParams()
+    const [loading, setLoading] = useState<boolean>(true)
+    const [loadButton, setLoadButton] = useState<boolean>(false)
 
     useEffect(() => {
         if (param) {
-            UserService.getById( param.id || '')
+            setLoading(true)
+            UserService.getById(param.id || '')
                 .then((data) => setUser(data.data))
+                .finally(() => setLoading(false))
         }
     }, [])
 
@@ -30,20 +34,25 @@ const User: FC = () => {
     }, [userAuth])
 
     const addFriend = async () => {
+        setLoadButton(true)
         await UserService.toggleFriend({userId: userAuth?._id || '', friendId: user._id})
         await UserService.getById(userAuth?._id || '')
             .then((data) => setAuthUser(data.data))
+            .finally(() => setLoadButton(false))
     }
 
     return (
         <div className={styles.blockHeader}>
-            {user && <>
-                <Avatar user={user}/>
-                <UserName user={user}/>
-                <UserInfo user={user}/>
-                <Button title={isToggle ? 'Удалить из друзей' : 'Добавить в друзья'} onClick={() => addFriend()}/>
-                <PostTape user={user}/>
-            </>}
+            {loading ? <h4>Загрузка</h4> :
+                <>
+                    <Avatar user={user}/>
+                    <UserName user={user}/>
+                    <UserInfo user={user}/>
+                    <Button title={isToggle ? 'Удалить из друзей' : 'Добавить в друзья'} onClick={() => addFriend()}
+                            isLoading={loadButton}/>
+                    <PostTape user={user}/>
+                </>
+            }
         </div>
     );
 }

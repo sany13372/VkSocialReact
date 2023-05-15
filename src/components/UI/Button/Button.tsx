@@ -1,8 +1,19 @@
 import {FC} from 'react';
 import styles from './Button.module.scss'
-const Button: FC<{title:string,onClick:any}> = ({onClick,title}) => {
+import cn from 'clsx'
+
+interface IButton {
+    title: string,
+    onClick: any
+    isLoading?:boolean
+}
+
+const Button: FC<IButton> = ({onClick, title, isLoading}) => {
     return (
-        <div className={styles.button} onClick={onClick}>
+        <div className={cn({
+            [styles.disable]:isLoading,
+            [styles.button]:!isLoading
+        })} onClick={onClick} aria-disabled={true}>
             {title}
         </div>
     );

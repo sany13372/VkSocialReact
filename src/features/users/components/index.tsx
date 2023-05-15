@@ -9,6 +9,7 @@ import {useDebounce} from "@hooks/useDebounce";
 import {IUser} from "@context/user/user.types";
 import UserItem from "@features/users/components/UserItem/UserItem";
 import {filterUsers} from "@utils/filtredUsers";
+import LoadingOrItems from "@components/UI/LoadingOrItems/LoadingOrItems";
 
 const Users: FC = () => {
     const {user} = useAuth()
@@ -16,12 +17,15 @@ const Users: FC = () => {
     const [nameUser, setNameUser] = useState<string>('')
     const {users} = useTypedSelector((store) => store.users)
     const debounceSearch = useDebounce(nameUser, 500)
+    const [loading, setLoading] = useState<boolean>(true)
     useEffect(() => {
         if (user) {
+            setLoading(true)
             UserService.getAll()
                 .then((data) => {
                     setUsers(filterUsers(data.data, user.friends))
                 })
+                .finally(() => setLoading(false))
         }
     }, [user])
 
@@ -29,8 +33,10 @@ const Users: FC = () => {
         if (user) {
             const usersFilters = [...users]?.filter((userItem: IUser) => userItem.name.toLowerCase().includes(debounceSearch.toLowerCase()))
             if (nameUser === '') {
+                setLoading(true)
                 UserService.getAll()
                     .then((data) => setUsers(filterUsers(data.data, user.friends)))
+                    .finally(() => setLoading(false))
             } else {
                 setUsers(usersFilters)
             }
@@ -40,7 +46,9 @@ const Users: FC = () => {
     return (
         <div className={styles.block}>
             <SearchLine value={nameUser} setValue={setNameUser} placeholder={'Введите имя'}/>
-            {users.map((usere) => <UserItem key={usere._id} user={usere}/>)}
+            <LoadingOrItems title={'Пользователей нет'} length={users.length} loading={loading}>
+                {users.map((usere) => <UserItem key={usere._id} user={usere}/>)}
+            </LoadingOrItems>
         </div>
     );
 }

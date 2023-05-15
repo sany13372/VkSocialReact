@@ -16,10 +16,7 @@ const CreatePostLine: FC = () => {
     const [imgPath,setImgPath] = useState<string>('')
     const change = async (path: any) => {
         if (path) {
-            console.log(path)
             setImgPath(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
-            await console.log('change',)
-            console.log(`${import.meta.env.VITE_REACT_NOTAPI_URL}${path[0].url}`)
         }
     }
     const {uploadImage} = useUpload(change, selectFile)
@@ -28,7 +25,7 @@ const CreatePostLine: FC = () => {
             .then(() => setRefetchProfile(!refetchProfile))
         setSelectFile(!selectFile)
         setDescription('')
-        console.log(uploadImage)
+        setImgPath('')
     }
 
     return (
