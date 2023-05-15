@@ -7,7 +7,8 @@ const News: FC = () => {
     const {user} = useAuth()
     return (
         <div className={styles.news}>
-            {user?.friends.map((friend) => <PostsBlock key={friend} userId={friend}/>)}
+            {user?.friends.length ? user?.friends.map((friend) => <PostsBlock key={friend} userId={friend}/>) :
+                <h4>Новостей нет</h4>}
         </div>
     );
 }
