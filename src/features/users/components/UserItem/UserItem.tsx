@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {IUser} from "@context/user/user.types";
-import notImg from '@assets/noAvatar.jpg'
+import notImg from '@assets/noAvatar.png'
 import styles from './UserItem.module.scss'
 import {useAuth} from "@providers/AuthProvider";
 import {useNavigate} from "react-router-dom";
